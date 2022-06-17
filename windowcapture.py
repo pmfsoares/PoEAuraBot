@@ -51,7 +51,7 @@ class WindowCapture:
         cDC.SelectObject(dataBitMap)
         cDC.BitBlt((0, 0), (self.w, self.h), dcObj, (self.cropped_x, self.cropped_y), win32con.SRCCOPY)
 
-        result = windll.user32.PrintWindow(self.hwnd, cDC.GetSafeHdc(), 3)
+        #result = windll.user32.PrintWindow(self.hwnd, cDC.GetSafeHdc(), 3)
         
         # convert the raw data into a format opencv can read
         #dataBitMap.SaveBitmapFile(cDC, 'debug.bmp')
@@ -81,6 +81,8 @@ class WindowCapture:
         # https://github.com/opencv/opencv/issues/14866#issuecomment-580207109
         img = np.ascontiguousarray(img)
         
+        #imgTrans = np.transpose(img, (2, 1, 0))
+     
         return img
 
     # find the name of the window you're interested in.
